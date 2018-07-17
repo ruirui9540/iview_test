@@ -7,7 +7,7 @@ let util = {
 
 };
 util.title = function (title) {
-    title = title || 'iView admin';
+    title = title || '国家税务总局安徽省税务局';
     window.document.title = title;
 };
 
@@ -201,7 +201,7 @@ util.openNewPage = function (vm, name, argu, query) {
         }
         i++;
     }
-    if (!tagHasOpened) {
+    if (!tagHasOpened) { // tagHasOpened=false
         let tag = vm.$store.state.app.tagsList.filter((item) => {
             if (item.children) {
                 return name === item.children[0].name;
@@ -209,6 +209,7 @@ util.openNewPage = function (vm, name, argu, query) {
                 return name === item.name;
             }
         });
+        // tag [{"path":"site-management","icon":"android-list","name":"site-management","title":"站点管理"}]
         tag = tag[0];
         if (tag) {
             tag = tag.children ? tag.children[0] : tag;
@@ -259,11 +260,92 @@ util.checkUpdate = function (vm) {
         });
         if (semver.lt(packjson.version, version)) {
             vm.$Notice.info({
-                title: 'iview-admin更新啦',
+                title: '更新啦',
                 desc: '<p>iView-admin更新到了' + version + '了，去看看有哪些变化吧</p><a style="font-size:13px;" href="https://github.com/iview/iview-admin/releases" target="_blank">前往github查看</a>'
             });
         }
     });
 };
 
+// 全局报错信息提示
+util.errorStatus = function (vm, res) {
+    switch (res.status) {
+        case 401:
+            // window.alert('授权失败');
+            vm.$store.commit('logout', vm);
+            // vm.$store.commit('clearOpenedSubmenu');
+            vm.$router.push({
+                name: 'login'
+            });
+            break;
+        case 403:
+            window.alert('您没有该操作权限');
+            break;
+        case 500:
+            window.alertg('服务器错误');
+    }
+};
+
+// 组织树的递归函数
+util.restore_last_state = (Vue, data, id) => {
+    var state;
+    if (data instanceof Array) {
+        for (let i in data) {
+            if (data[i].id === id) {
+                Vue.set(data[i], 'expand', true);
+                Vue.set(data[i], 'selected', true);
+                return true;
+            } else {
+                if ((data[i].children !== undefined) && (data[i].children instanceof Array)) {
+                    state = this.restore_last_state(Vue, data[i].children, id);
+                    if (state) {
+                        Vue.set(data[i], 'expand', true);
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+};
+// 组织树的递归函数2
+util.restore = (Vue, data, id) => {
+    var state;
+    if (data instanceof Array) {
+        for (let i in data) {
+            if (Number(data[i].id) === Number(id)) {
+                Vue.set(data[i], '_isFold', false);
+                Vue.set(data[i], '_isHide', false);
+                var children = data[i].children;
+                for (var j in children) {
+                    children[j]._isHide = false;
+                }
+                return true;
+            } else {
+                if ((data[i].children !== undefined) && (data[i].children instanceof Array)) {
+                    state = util.restore(Vue, data[i].children, id);
+                    if (state) {
+                        var child = data[i].children;
+                        for (var g in child) {
+                            child[g]._isHide = false;
+                        }
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+};
+// 数组去重 使用console.log(util.unite(arr))
+util.unite = (arr) => {
+    var s = [];
+    // 遍历数组
+    for (var i = 0; i < arr.length; i++) {
+        if (s.indexOf(arr[i]) === -1) { // 判断在s数组中是否存在，不存在则push到s数组中
+            s.push(arr[i]);
+        }
+    }
+    return s;
+};
 export default util;

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import CountUp from 'countup';
+import CountUp from 'countup';//数字跳动效果插件
 
 function transformValue (val) {
     let endVal = 0;

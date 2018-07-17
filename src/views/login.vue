@@ -65,6 +65,7 @@ export default {
                     this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
                     if (this.form.userName === 'iview_admin') {
                         Cookies.set('access', 0);
+                         this.$store.commit('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNCwiZW1haWwiOiIiLCJleHAiOjE1MzE0NzMzMDgsInVzZXJuYW1lIjoiVk10UnliWUVKal9zMXZSTSJ9.J7doBJNF8lLrdEGT-AHKAySSzk7OfPDmLZGApQ0SbHk');
                     } else {
                         Cookies.set('access', 1);
                     }

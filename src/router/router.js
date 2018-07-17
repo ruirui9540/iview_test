@@ -7,7 +7,7 @@ export const loginRouter = {
     meta: {
         title: 'Login - 登录'
     },
-    component: () => import('@/views/login.vue')
+    component: () => import('@/views/login.vue')//异步加载
 };
 
 export const page404 = {
@@ -25,7 +25,7 @@ export const page403 = {
         title: '403-权限不足'
     },
     name: 'error-403',
-    component: () => import('@//views/error-page/403.vue')
+    component: () => import('@/views/error-page/403.vue')
 };
 
 export const page500 = {
@@ -37,13 +37,13 @@ export const page500 = {
     component: () => import('@/views/error-page/500.vue')
 };
 
-export const preview = {
+export const preview = {  //暂时没发现使用地方
     path: '/preview',
     name: 'preview',
     component: () => import('@/views/form/article-publish/preview.vue')
 };
 
-export const locking = {
+export const locking = { //锁屏页面
     path: '/locking',
     name: 'locking',
     component: () => import('@/views/main-components/lockscreen/components/locking-page.vue')
@@ -53,14 +53,14 @@ export const locking = {
 export const otherRouter = {
     path: '/',
     name: 'otherRouter',
-    redirect: '/home',
+    redirect: '/home',//重定向
     component: Main,
     children: [
-        { path: 'home', title: {i18n: 'home'}, name: 'home_index', component: () => import('@/views/home/home.vue') },
+        { path: '/home',alias:'index', title: {i18n: 'home'}, name: 'home_index', component: () => import('@/views/home/home.vue') },//alias别名
         { path: 'ownspace', title: '个人中心', name: 'ownspace_index', component: () => import('@/views/own-space/own-space.vue') },
-        { path: 'order/:order_id', title: '订单详情', name: 'order-info', component: () => import('@/views/advanced-router/component/order-info.vue') }, // 用于展示动态路由
-        { path: 'shopping', title: '购物详情', name: 'shopping', component: () => import('@/views/advanced-router/component/shopping-info.vue') }, // 用于展示带参路由
-        { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') }
+        { path: 'order/:order_id', title: '订单详情', name: 'order-info', component: () => import('@/views/advanced-router/component/order-info.vue') }, // 用于展示动态路由 二级页面，动态页面来的params
+        { path: 'shopping', title: '购物详情', name: 'shopping', component: () => import('@/views/advanced-router/component/shopping-info.vue') }, // 用于展示带参路由 从带参页面来的query
+        { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') },
     ]
 };
 
@@ -101,9 +101,45 @@ export const appRouter = [
         path: '/component',
         icon: 'social-buffer',
         name: 'component',
-        title: '组件',
+        title: '系统管理',
         component: Main,
         children: [
+            {
+                path: 'user-management',
+                icon: 'arrow-graph-up-right',
+                name: 'user-management',
+                title: '用户管理',
+                // component: () => import('@/views/my-components/count-to/count-to.vue')
+                component: () => import('@/views/my-components/user-management/user-management.vue')
+            },
+            {
+                path: 'organization-management',
+                icon: 'android-upload',
+                name: 'organization-management',
+                title: '组织管理',
+                component: () => import('@/views/my-components/organization-management/organization-management.vue')
+            },
+            {
+                path: 'department-management',
+                icon: 'android-contacts',
+                name: 'department-management',
+                title: '部门管理',
+                component: () => import('@/views/my-components/department-management/department-management.vue'),
+            },
+            {
+                path: 'site-management',
+                icon: 'android-list',
+                name: 'site-management',
+                title: '站点管理',
+                component: () => import('@/views/my-components/site-management/site-management.vue')
+            },
+            {
+                path: 'column-management',
+                icon: 'social-buffer',
+                name: 'column-management',
+                title: '栏目管理',
+                component: () => import('@/views/my-components/column-management/column-management.vue')
+            },
             {
                 path: 'text-editor',
                 icon: 'compose',
@@ -115,7 +151,7 @@ export const appRouter = [
                 path: 'md-editor',
                 icon: 'pound',
                 name: 'md-editor',
-                title: 'Markdown编辑器',
+                title: 'markdown编辑器',
                 component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
             },
             {
@@ -153,21 +189,6 @@ export const appRouter = [
                 title: '滚动条',
                 component: () => import('@/views/my-components/scroll-bar/scroll-bar-page.vue')
             },
-            {
-                path: 'count-to',
-                icon: 'arrow-graph-up-right',
-                name: 'count-to',
-                title: '数字渐变',
-                // component: () => import('@/views/my-components/count-to/count-to.vue')
-                component: () => import('@/views/my-components/count-to/count-to.vue')
-            },
-            {
-                path: 'split-pane-page',
-                icon: 'ios-pause',
-                name: 'split-pane-page',
-                title: 'split-pane',
-                component: () => import('@/views/my-components/split-pane/split-pane-page.vue')
-            }
         ]
     },
     {

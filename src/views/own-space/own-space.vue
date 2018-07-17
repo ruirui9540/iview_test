@@ -189,6 +189,7 @@ export default {
             this.$refs['userForm'].validate((valid) => {
                 if (valid) {
                     if (this.phoneHasChanged && this.userForm.cellphone !== this.initPhone) { // 手机号码修改过了而且修改之后的手机号和原来的不一样
+                    alert(this.hasGetIdentifyCode)
                         if (this.hasGetIdentifyCode) { // 判断是否点了获取验证码
                             if (this.identifyCodeRight) { // 判断验证码是否正确
                                 this.saveInfoAjax();
@@ -241,8 +242,8 @@ export default {
         },
         hasChangePhone () {
             this.phoneHasChanged = true;
-            this.hasGetIdentifyCode = false;
-            this.identifyCodeRight = false;
+            this.hasGetIdentifyCode = true;
+            this.identifyCodeRight = true;
         },
         saveInfoAjax () {
             this.save_loading = true;

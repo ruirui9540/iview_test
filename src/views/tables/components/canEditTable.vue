@@ -4,7 +4,7 @@
 
 <template>
     <div>
-        <Table :ref="refs" :columns="columnsList" :data="thisTableData" border disabled-hover></Table>
+        <Table style='width:100%' :ref="refs" :columns="columnsList" :data="thisTableData" border disabled-hover></Table>
     </div>
 </template>
 
@@ -12,16 +12,20 @@
 const editButton = (vm, h, currentRow, index) => {
     return h('Button', {
         props: {
-            type: currentRow.editting ? 'success' : 'primary',
-            loading: currentRow.saving
+            // type: currentRow.editting ? 'success' : 'primary',
+            type:'text',
+            loading: currentRow.saving,
+            size:'small'
         },
         style: {
-            margin: '0 5px'
+            margin: '0 5px',
+                color:'#2d8cf0'
         },
         on: {
             'click': () => {
-                if (!currentRow.editting) {
-                    if (currentRow.edittingCell) {
+                console.log(currentRow.edittingCell)
+                if (!currentRow.editting) {//false
+                    if (currentRow.edittingCell) {//是否可编辑
                         for (let name in currentRow.edittingCell) {
                             currentRow.edittingCell[name] = false;
                             vm.edittingStore[index].edittingCell[name] = false;
@@ -52,6 +56,8 @@ const deleteButton = (vm, h, currentRow, index) => {
         },
         on: {
             'on-ok': () => {
+                //删除函数
+                console.log(index)
                 vm.thisTableData.splice(index, 1);
                 vm.$emit('input', vm.handleBackdata(vm.thisTableData));
                 vm.$emit('on-delete', vm.handleBackdata(vm.thisTableData), index);
@@ -60,11 +66,14 @@ const deleteButton = (vm, h, currentRow, index) => {
     }, [
         h('Button', {
             style: {
-                margin: '0 5px'
+                margin: '0 5px',
+                color:'#2d8cf0'
             },
             props: {
-                type: 'error',
-                placement: 'top'
+                // type: 'error',
+                type:'text',
+                placement: 'top',
+                size:'small'
             }
         }, '删除')
     ]);
@@ -269,6 +278,7 @@ export default {
                 delete item.edittingCell;
                 delete item.saving;
             });
+             console.log(clonedData)
             return clonedData;
         }
     },

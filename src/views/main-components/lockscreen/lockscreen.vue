@@ -9,9 +9,9 @@
 <script>
 import Cookies from 'js-cookie';
 const setLockBackSize = () => {
-    let x = document.body.clientWidth;
+    let x = document.body.clientWidth;//网页可见区域宽
     let y = document.body.clientHeight;
-    let r = Math.sqrt(x * x + y * y);
+    let r = Math.sqrt(x * x + y * y);//平方根
     return parseInt(r);
 };
 export default {

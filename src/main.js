@@ -8,10 +8,16 @@ import '@/locale';
 import 'iview/dist/styles/iview.css';
 import VueI18n from 'vue-i18n';
 import util from './libs/util';
-
+// 引用API文件
+import api from './api/client-api';
+// 引用组织树
+import ZkTable from 'vue-table-with-tree-grid';
+Vue.use(ZkTable);
+// import axios from 'axios';
 Vue.use(VueI18n);
 Vue.use(iView);
-
+// 将API方法绑定到全局
+Vue.prototype.$api = api;
 new Vue({
     el: '#app',
     router: router,

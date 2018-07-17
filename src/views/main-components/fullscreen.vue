@@ -49,7 +49,7 @@ export default {
             this.handleFullscreen();
         }
     },
-    created () {
+    created () {//实例已经创建完成之后被调用。在这一步，实例已经完成以下的配置：数据观测，属性和方法的运算，watch/event事件回调。然而，挂载阶段还没开始，$el属性目前不可见。
         let isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
         isFullscreen = !!isFullscreen;
         document.addEventListener('fullscreenchange', () => {

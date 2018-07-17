@@ -53,7 +53,7 @@ export const editInlineColumns = [
     {
         title: '序号',
         type: 'index',
-        width: 80,
+        width: 60,
         align: 'center'
     },
     {
@@ -64,14 +64,29 @@ export const editInlineColumns = [
         editable: true
     },
     {
-        title: '性别',
+        title: '登录名',
         align: 'center',
-        key: 'sex'
+        key: 'loginname',
+        width: 90
     },
     {
-        title: '岗位',
+        title: '所属机构',
+        align: 'center',
+        key: 'danwei',
+        width: 120,
+        editable: true
+    },
+    {
+        title: '职务',
         align: 'center',
         key: 'work',
+        width: 150,
+        editable: true
+    },
+    {
+        title: '电话',
+        align: 'center',
+        key: 'phone',
         width: 150,
         editable: true
     },
@@ -86,19 +101,88 @@ export const editInlineColumns = [
 
 export const editInlineData = [
     {
-        name: 'Aresn',
-        sex: '男',
-        work: '前端开发'
+        name: '合肥市税务局',
+        loginname: '小张',
+        work: '前端开发',
+        phone: '15045678969',
+        danwei: '国家税务总局合肥市税务局'
     },
     {
-        name: 'Lison',
-        sex: '男',
-        work: '前端开发'
+        name: '合肥市税务局',
+        loginname: '小天',
+        work: '前端开发',
+        phone: '15045678968',
+        danwei: '国家税务总局合肥市税务局'
     },
     {
-        name: 'lisa',
-        sex: '女',
-        work: '程序员鼓励师'
+        name: '合肥市税务局',
+        loginname: '小于',
+        work: '程序员鼓励师',
+        phone: '15045678965',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小张',
+        work: '前端开发',
+        phone: '15045678969',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小天',
+        work: '前端开发',
+        phone: '15045678968',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小于',
+        work: '程序员鼓励师',
+        phone: '15045678965',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小张',
+        work: '前端开发',
+        phone: '15045678969',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小天',
+        work: '前端开发',
+        phone: '15045678968',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小于',
+        work: '程序员鼓励师',
+        phone: '15045678965',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小张',
+        work: '前端开发',
+        phone: '15045678969',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小天',
+        work: '前端开发',
+        phone: '15045678968',
+        danwei: '国家税务总局合肥市税务局'
+    },
+    {
+        name: '合肥市税务局',
+        loginname: '小于',
+        work: '程序员鼓励师',
+        phone: '15045678965',
+        danwei: '国家税务总局合肥市税务局'
     }
 ];
 

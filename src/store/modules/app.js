@@ -2,7 +2,8 @@ import {otherRouter, appRouter} from '@/router/router';
 import Util from '@/libs/util';
 import Cookies from 'js-cookie';
 import Vue from 'vue';
-
+import logoImg1 from '@/images/logo1.jpg';
+import logoImg from '@/images/logo.jpg';
 const app = {
     state: {
         cachePage: [],
@@ -11,6 +12,7 @@ const app = {
         openedSubmenuArr: [], // 要展开的菜单数组
         menuTheme: 'dark', // 主题
         themeColor: '',
+        logoImg: logoImg1,
         pageOpenedList: [{
             title: '首页',
             path: '',
@@ -89,6 +91,11 @@ const app = {
         },
         changeMenuTheme (state, theme) {
             state.menuTheme = theme;
+            if (theme === 'dark') {
+                state.logoImg = logoImg1;
+            } else {
+                state.logoImg = logoImg;
+            }
         },
         changeMainTheme (state, mainTheme) {
             state.themeColor = mainTheme;
@@ -172,6 +179,10 @@ const app = {
         },
         setAvator (state, path) {
             localStorage.avatorImgPath = path;
+        },
+        // 添加token
+        token (state, token) {
+            localStorage.token = token;
         },
         switchLang (state, lang) {
             state.lang = lang;

@@ -13,7 +13,7 @@ fs.open('./build/env.js', 'w', function(err, fd) {
 });
 
 module.exports = merge(webpackBaseConfig, {
-    devtool: '#source-map',
+    devtool: '#source-map',devServer: { port:8080 },
     output: {
         publicPath: '/dist/',
         filename: '[name].js',

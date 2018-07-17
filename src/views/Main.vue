@@ -13,7 +13,7 @@
                     :open-names="openedSubmenuArr"
                     :menu-list="menuList">
                     <div slot="top" class="logo-con">
-                        <img v-show="!shrink"  src="../images/logo.jpg" key="max-logo" />
+                        <img v-show="!shrink"  :src="logoImg" key="max-logo" />
                         <img v-show="shrink" src="../images/logo-min.jpg" key="min-logo" />
                     </div>
                 </shrinkable-menu>
@@ -30,13 +30,15 @@
                     <div class="main-breadcrumb">
                         <breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>
                     </div>
+                    <dropDown></dropDown>
                 </div>
                 <div class="header-avator-con">
+                    <!-- 搜索 -->
+                    <search ref="search"></search>
                     <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
                     <lock-screen></lock-screen>
                     <message-tip v-model="mesCount"></message-tip>
                     <theme-switch></theme-switch>
-                    
                     <div class="user-dropdown-menu-con">
                         <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
                             <Dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
@@ -78,7 +80,8 @@
     import Cookies from 'js-cookie';
     import util from '@/libs/util.js';
     import scrollBar from '@/views/my-components/scroll-bar/vue-scroller-bars';
-    
+    import search from './main-components/search.vue'
+    import dropDown from './main-components/dropDown.vue'
     export default {
         components: {
             shrinkableMenu,
@@ -88,7 +91,9 @@
             lockScreen,
             messageTip,
             themeSwitch,
-            scrollBar
+            scrollBar,
+            search,
+            dropDown
         },
         data () {
             return {
@@ -119,6 +124,9 @@
             },
             menuTheme () {
                 return this.$store.state.app.menuTheme;
+            },
+            logoImg () {
+                return this.$store.state.app.logoImg;
             },
             mesCount () {
                 return this.$store.state.app.messageCount;
@@ -165,8 +173,8 @@
                     util.openNewPage(this, name, this.$route.params || {}, this.$route.query || {});
                 }
             },
-            handleSubmenuChange (val) {
-                // console.log(val)
+            handleSubmenuChange (val) {//val==侧边栏页面的name
+                // alert(val)
             },
             beforePush (name) {
                 // if (name === 'accesstest_index') {
@@ -177,11 +185,15 @@
                 return true;
             },
             fullscreenChange (isFullScreen) {
-                // console.log(isFullScreen);
+                // console.log(isFullScreen);//true/false
             },
             scrollBarResize () {
-                this.$refs.scrollBar.resize();
+                // this.$refs.scrollBar.resize();//重置大小=>scrollBar是上面ref定义的dom元素的名字
+            },
+            onblur(){
+                this.refs.search.blur()//调用子元素
             }
+            
         },
         watch: {
             '$route' (to) {
@@ -204,7 +216,14 @@
         },
         mounted () {
             this.init();
-            window.addEventListener('resize', this.scrollBarResize);
+            var that=this;
+            window.addEventListener('resize', that.scrollBarResize);
+            //试用  text列表 eg  已成功可以直接使用
+            //    that.$api.getBloggerInfo('').then((r) => {
+            //         console.log(r)
+            //     }).catch((r)=>{
+            //        util.errorStatus(that,r)
+            //     })
         },
         created () {
             // 显示打开的页面的列表

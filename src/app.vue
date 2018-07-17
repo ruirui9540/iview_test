@@ -34,4 +34,7 @@ html,body{
     width: 100%;
     height: 100%;
 }
+ .ivu-modal-mask{
+    background-color:rgba(55,55,55,.1)
+  }
 </style>
