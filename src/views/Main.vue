@@ -27,10 +27,11 @@
                     </Button>
                 </div>
                 <div class="header-middle-con">
+                    <div class='drop_main' @click="dropBtn">下拉菜单<Icon type="arrow-down-b"></Icon></div>
                     <div class="main-breadcrumb">
                         <breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>
                     </div>
-                    <dropDown></dropDown>
+                   
                 </div>
                 <div class="header-avator-con">
                     <!-- 搜索 -->
@@ -67,6 +68,9 @@
                 </keep-alive>
             </div>
         </div>
+
+        <!-- 隐形的下拉菜单 -->
+        <dropDown v-show="drop"></dropDown>
     </div>
 </template>
 <script>
@@ -100,7 +104,8 @@
                 shrink: false,
                 userName: '',
                 isFullScreen: false,
-                openedSubmenuArr: this.$store.state.app.openedSubmenuArr
+                openedSubmenuArr: this.$store.state.app.openedSubmenuArr,
+                drop:false
             };
         },
         computed: {
@@ -192,6 +197,9 @@
             },
             onblur(){
                 this.refs.search.blur()//调用子元素
+            },
+            dropBtn(){
+                this.drop=!this.drop
             }
             
         },

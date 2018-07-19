@@ -4,11 +4,12 @@
 
 <template>
     <div>
-        <Table style='width:100%' :ref="refs" :columns="columnsList" :data="thisTableData" border disabled-hover></Table>
+        <Table style='width:100%' ref="table" :columns="columnsList" :data="thisTableData" border disabled-hover></Table>
     </div>
 </template>
 
 <script>
+import Sortable from 'sortablejs';
 const editButton = (vm, h, currentRow, index) => {
     return h('Button', {
         props: {
@@ -280,12 +281,12 @@ export default {
             });
              console.log(clonedData)
             return clonedData;
-        }
+        },
     },
     watch: {
         value (data) {
             this.init();
         }
-    }
+    },
 };
 </script>

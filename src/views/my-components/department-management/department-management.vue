@@ -1,17 +1,22 @@
 <template>
        <div style='height:100%' class='depart'>
+            <div class="navicon1" @click="toggleClick" v-show="iconBtn">
+                        <!-- <Icon type="android-arrow-forward" size=16></Icon> -->
+                        <Icon type="android-arrow-back" size=16 :style="{transform: 'rotateZ(' + (this.iconBtn ? '-180' : '0') + 'deg)'}" ></Icon>
+                </div>
        <Row class='depart-row'>
            <Col :span="iconBtn?'0':'4'" class='col1 background'>
-                <div class='backTop'>部门管理</div>
+                <div class='backTop'>机构组织</div>
                 <Tree :data="data"  @on-select-change="seclectChange" ref='tree'></Tree>
+                
             </Col>
            <Col :span="iconBtn?'24':'20'" class='col2'>
-                <div :class=" iconBtn?'navicon1':'navicon'" @click="toggleClick">
+           <div :class=" iconBtn?'navicon1':'navicon'" @click="toggleClick" v-show="!iconBtn">
                         <!-- <Icon type="android-arrow-forward" size=16></Icon> -->
                         <Icon type="android-arrow-back" size=16 :style="{transform: 'rotateZ(' + (this.iconBtn ? '-180' : '0') + 'deg)'}" ></Icon>
                 </div>
                  <Row class='row1'>
-                    <Col span='24' class="margin-left-20 white">
+                    <Col span='24' class="margin-left-20 white" style='height:100%'>
                        <tableEdit :editInlineData='editInlineData' :editInlineColumns='editInlineColumns'></tableEdit>
                     </Col>
                 </Row>
@@ -20,7 +25,6 @@
    </div>
 </template>
 <script>
-import canEditTable from '../../tables/components/canEditTable.vue';
 import tableData from '../../tables/components/table_data.js';
 import util from '@/libs/util.js';
 import Vue from 'vue';
@@ -28,7 +32,6 @@ import tableEdit from './rightCon/tableEdit.vue'
 export default {
     name: 'department-management',
     components: {
-        canEditTable,
         tableEdit
     },
     data () {
@@ -176,6 +179,7 @@ export default {
              toggleClick () {
                 this.iconBtn = !this.iconBtn;
             },
+            
         },
         mounted(){
             var params=''
@@ -195,7 +199,7 @@ export default {
     @import '../../../styles/common.less';
     // @import '../user-management/user-management.less';
     .depart .ivu-tree {
-    overflow-y: scroll;
+    overflow-y: auto;
     padding-bottom: 110px;
     height: 100%;
 }
@@ -208,11 +212,43 @@ export default {
     height: 99%;
     .col2{
         height: 100%;
-        overflow-y: scroll;
     }
+    .page{
+        margin-top: 15px;
+    }
+    // 表格 tableRdit中的样式
+    .right{
+        text-align: right
+    }
+    .tableTop{
+        margin-bottom: 10px;
+        display: flex;
+        margin-top: 10px
+    }
+      .tableTop>div{
+          flex: 1
+      }
+      .card{
+          padding: 16px;
+          height: 100%
+      }
+      .row1{
+          height: 98%
+      }
+     
 }
-.main .single-page-con{
-    overflow-y: hidden
+ .ivu-transfer-list{
+          width: 240px;
+          height:320px;
+          }
+.ivu-modal{
+    width: 700px!important;
+}
+.ivu-modal-body{
+    text-align: center
+}
+.ivu-transfer-list-header,.ivu-transfer-list-content-item{
+    text-align: left
 }
 </style>
 

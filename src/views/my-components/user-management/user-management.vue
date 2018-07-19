@@ -8,24 +8,15 @@
        <Row class='user-row'>
            <Col span="24">
            <Card>
-                <p slot="title">
-                    <Icon type="android-contact"></Icon>
-                    用户管理
-                </p>
                  <Row class='row1'>
                     <Col span="4" class='col3'>
                          <Tree :data="data"  @on-select-change="seclectChange" ref='tree'></Tree>
                     </Col>
                     <Col span='20' class="padding-left-20">
-                         <div class='right'>
-                              <Input v-model="value" icon="ios-search-strong" placeholder="检索"  style="width: 200px"></Input>
-                                <Button type="primary">检索</Button>
-                         </div>
                          <div class="access-user-con access-change-access-con">
-                          <can-edit-table refs="table2" v-model="editInlineData" :columns-list="editInlineColumns"></can-edit-table>
+                              <tableEdit :editInlineData='editInlineData' :editInlineColumns='editInlineColumns'></tableEdit>
                          </div>
-                         <!-- 分页 -->
-                         <Page :total="100" show-elevator size='small'></Page>
+                         
                     </Col>
                 </Row>
            </Card>
@@ -40,16 +31,18 @@ import canEditTable from '../../tables/components/canEditTable.vue';
 import tableData from '../../tables/components/table_data.js';
 import util from '@/libs/util.js';
 import Vue from 'vue';
+import tableEdit from '../department-management/rightCon/tableEdit.vue'
     export default {
          name: 'user-management',
           components: {
-            canEditTable
+            canEditTable,
+            tableEdit
         },
         data () {
             return {
                 data1: [],
-                editInlineData: tableData.editInlineData,
-                editInlineColumns : tableData.editInlineColumns,
+                editInlineData: tableData.userData,
+                editInlineColumns : tableData.useColumns,
                 idstr:'',
                 value:"",
                 data: [

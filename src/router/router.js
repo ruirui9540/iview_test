@@ -70,7 +70,7 @@ export const appRouter = [
         path: '/access',
         icon: 'key',
         name: 'access',
-        title: '权限管理',
+        title: '用户权限设置',
         component: Main,
         children: [
             { path: 'index', title: '权限管理', name: 'access_index', component: () => import('@/views/access/access.vue') }
@@ -105,18 +105,10 @@ export const appRouter = [
         component: Main,
         children: [
             {
-                path: 'user-management',
-                icon: 'arrow-graph-up-right',
-                name: 'user-management',
-                title: '用户管理',
-                // component: () => import('@/views/my-components/count-to/count-to.vue')
-                component: () => import('@/views/my-components/user-management/user-management.vue')
-            },
-            {
                 path: 'organization-management',
                 icon: 'android-upload',
                 name: 'organization-management',
-                title: '组织管理',
+                title: '机构管理',
                 component: () => import('@/views/my-components/organization-management/organization-management.vue')
             },
             {
@@ -127,104 +119,101 @@ export const appRouter = [
                 component: () => import('@/views/my-components/department-management/department-management.vue'),
             },
             {
-                path: 'site-management',
-                icon: 'android-list',
-                name: 'site-management',
-                title: '站点管理',
-                component: () => import('@/views/my-components/site-management/site-management.vue')
+                path: 'user-management',
+                icon: 'arrow-graph-up-right',
+                name: 'user-management',
+                title: '用户管理',
+                // component: () => import('@/views/my-components/count-to/count-to.vue')
+                component: () => import('@/views/my-components/user-management/user-management.vue')
             },
             {
-                path: 'column-management',
+                path: 'user-group',
+                icon: 'android-list',
+                name: 'user-group',
+                title: '用户组设置',
+                component: () => import('@/views/my-components/user-group/user-group.vue')
+            },
+            {
+                path: 'menu-management',
                 icon: 'social-buffer',
-                name: 'column-management',
-                title: '栏目管理',
-                component: () => import('@/views/my-components/column-management/column-management.vue')
+                name: 'menu-management',
+                title: '菜单管理',
+                component: () => import('@/views/my-components/menu-management/menu-management.vue')
             },
             {
                 path: 'text-editor',
                 icon: 'compose',
                 name: 'text-editor',
-                title: '富文本编辑器',
+                title: '应用扩展',
                 component: () => import('@/views/my-components/text-editor/text-editor.vue')
             },
-            {
-                path: 'md-editor',
-                icon: 'pound',
-                name: 'md-editor',
-                title: 'markdown编辑器',
-                component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-            },
-            {
-                path: 'image-editor',
-                icon: 'crop',
-                name: 'image-editor',
-                title: '图片预览编辑',
-                component: () => import('@/views/my-components/image-editor/image-editor.vue')
-            },
-            {
-                path: 'draggable-list',
-                icon: 'arrow-move',
-                name: 'draggable-list',
-                title: '可拖拽列表',
-                component: () => import('@/views/my-components/draggable-list/draggable-list.vue')
-            },
-            {
-                path: 'area-linkage',
-                icon: 'ios-more',
-                name: 'area-linkage',
-                title: '城市级联',
-                component: () => import('@/views/my-components/area-linkage/area-linkage.vue')
-            },
-            {
-                path: 'file-upload',
-                icon: 'android-upload',
-                name: 'file-upload',
-                title: '文件上传',
-                component: () => import('@/views/my-components/file-upload/file-upload.vue')
-            },
-            {
-                path: 'scroll-bar',
-                icon: 'android-upload',
-                name: 'scroll-bar',
-                title: '滚动条',
-                component: () => import('@/views/my-components/scroll-bar/scroll-bar-page.vue')
-            },
+       
         ]
     },
     {
         path: '/form',
         icon: 'android-checkbox',
         name: 'form',
-        title: '表单编辑',
+        title: '内容管理',
         component: Main,
         children: [
-            { path: 'artical-publish', title: '文章发布', name: 'artical-publish', icon: 'compose', component: () => import('@/views/form/article-publish/article-publish.vue') },
-            { path: 'workflow', title: '工作流', name: 'workflow', icon: 'arrow-swap', component: () => import('@/views/form/work-flow/work-flow.vue') }
+            { path: 'artical-publish', title: '站点管理', name: 'artical-publish', icon: 'compose', component: () => import('@/views/form/article-publish/article-publish.vue') },
+            { path: 'workflow', title: '栏目管理', name: 'workflow', icon: 'arrow-swap', component: () => import('@/views/form/work-flow/work-flow.vue') },
+            {
+                path: 'md-editor',
+                icon: 'pound',
+                name: 'md-editor',
+                title: '模板管理',
+                component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
+            },
+            {
+                path: 'image-editor',
+                icon: 'crop',
+                name: 'image-editor',
+                title: '信息管理',
+                component: () => import('@/views/my-components/image-editor/image-editor.vue')
+            },
+            {
+                path: 'draggable-list',
+                icon: 'arrow-move',
+                name: 'draggable-list',
+                title: '内容权限',
+                component: () => import('@/views/my-components/draggable-list/draggable-list.vue')
+            },
+            {
+                path: 'area-linkage',
+                icon: 'ios-more',
+                name: 'area-linkage',
+                title: '内容工作流',
+                component: () => import('@/views/my-components/area-linkage/area-linkage.vue')
+            },
+            {
+                path: 'file-upload',
+                icon: 'android-upload',
+                name: 'file-upload',
+                title: '待办事项',
+                component: () => import('@/views/my-components/file-upload/file-upload.vue')
+            },
+            {
+                path: 'scroll-bar',
+                icon: 'android-upload',
+                name: 'scroll-bar',
+                title: '站点信息',
+                component: () => import('@/views/my-components/scroll-bar/scroll-bar-page.vue')
+            },
 
         ]
     },
-    // {
-    //     path: '/charts',
-    //     icon: 'ios-analytics',
-    //     name: 'charts',
-    //     title: '图表',
-    //     component: Main,
-    //     children: [
-    //         { path: 'pie', title: '饼状图', name: 'pie', icon: 'ios-pie', component: resolve => { require('@/views/access/access.vue') },
-    //         { path: 'histogram', title: '柱状图', name: 'histogram', icon: 'stats-bars', component: resolve => { require('@/views/access/access.vue') }
-
-    //     ]
-    // },
     {
         path: '/tables',
         icon: 'ios-grid-view',
         name: 'tables',
-        title: '表格',
+        title: '微信管理',
         component: Main,
         children: [
-            { path: 'dragableTable', title: '可拖拽排序', name: 'dragable-table', icon: 'arrow-move', component: () => import('@/views/tables/dragable-table.vue') },
-            { path: 'editableTable', title: '可编辑表格', name: 'editable-table', icon: 'edit', component: () => import('@/views/tables/editable-table.vue') },
-            { path: 'searchableTable', title: '可搜索表格', name: 'searchable-table', icon: 'search', component: () => import('@/views/tables/searchable-table.vue') },
+            { path: 'dragableTable', title: '通讯录', name: 'dragable-table', icon: 'arrow-move', component: () => import('@/views/tables/dragable-table.vue') },
+            { path: 'editableTable', title: '签到簿', name: 'editable-table', icon: 'edit', component: () => import('@/views/tables/editable-table.vue') },
+            { path: 'searchableTable', title: '授权用户', name: 'searchable-table', icon: 'search', component: () => import('@/views/tables/searchable-table.vue') },
             { path: 'exportableTable', title: '表格导出数据', name: 'exportable-table', icon: 'code-download', component: () => import('@/views/tables/exportable-table.vue') },
             { path: 'table2image', title: '表格转图片', name: 'table-to-image', icon: 'images', component: () => import('@/views/tables/table-to-image.vue') }
         ]
@@ -233,11 +222,13 @@ export const appRouter = [
         path: '/advanced-router',
         icon: 'ios-infinite',
         name: 'advanced-router',
-        title: '高级路由',
+        title: '手机端网站',
         component: Main,
         children: [
-            { path: 'mutative-router', title: '动态路由', name: 'mutative-router', icon: 'link', component: () => import('@/views/advanced-router/mutative-router.vue') },
-            { path: 'argument-page', title: '带参页面', name: 'argument-page', icon: 'android-send', component: () => import('@/views/advanced-router/argument-page.vue') }
+            { path: 'mutative-router', title: '聚焦大图', name: 'mutative-router', icon: 'link', component: () => import('@/views/advanced-router/mutative-router.vue') },
+            { path: 'argument-page', title: '皖税头条', name: 'argument-page', icon: 'android-send', component: () => import('@/views/advanced-router/argument-page.vue') },
+            { path: 'dragableTable', title: '专题链接', name: 'dragable-table', icon: 'arrow-move', component: () => import('@/views/tables/dragable-table.vue') },
+            { path: 'table2image', title: '互动问题', name: 'table-to-image', icon: 'images', component: () => import('@/views/tables/table-to-image.vue') }
         ]
     },
     {

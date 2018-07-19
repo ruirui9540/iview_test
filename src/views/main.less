@@ -1,3 +1,8 @@
+// ul li清除样式
+ul li{
+    padding:0;margin:0;list-style:none
+
+}
 .lock-screen-back{
     border-radius: 50%;
     z-index: -1;
@@ -25,7 +30,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 21;
+        z-index: 24;
         transition: width .3s;
         background: rgb(73, 80, 96)
     }
@@ -33,6 +38,7 @@
         display: inline-block;
         white-space:nowrap;
         position: absolute;
+        font-size: 13px;
     }
     .main-hide-text .layout-text{
         display: none;
@@ -57,6 +63,9 @@
     &-menu-left{
         background: #464c5b;
         height: 100%;
+    }
+    .main-header-con{
+        z-index: 23
     }
     .tags-con{
         height: 40px;
@@ -108,31 +117,96 @@
             right: 340px;
             bottom: 0;
             padding: 10px;
-            // overflow: hidden;
-            .dropdown{
-                width: 120px;
-                display: inline-block;
-                font-size: 14px;
-                .ivu-dropdown-rel>a{
+                .drop_main{
                     color: #495060;
                     transition: color .2s ease-in-out;
-                    font-size: 14px;
-                }
-                .ivu-dropdown-menu{
-                    padding: 8px;
-                    width: 100%
-                }
-                .ivu-dropdown-menu>ul{
-                    width: 30%;
-                    display: inline-block;
-                    background-color: #f1f1f1;
-                    margin-right:1%;
-                }
-                .ivu-select-dropdown{
-                    width: 500px;
+                    display:inline-block;
+                    font-size: 13px;
                 }
                 
-            }
+            // .dropdown{
+            //     width: 120px;
+            //     display: inline-block;
+            //     font-size: 14px;
+            //     .ivu-dropdown-rel>a{
+            //         color: #495060;
+            //         transition: color .2s ease-in-out;
+            //         font-size: 14px;
+            //     }
+            //     .ivu-dropdown-menu{
+            //         padding: 8px;
+            //         width: 100%
+            //     }
+            //     .content{
+            //         width: 100%;
+            //         display: flex
+            //     }
+            //      .content>div{
+            //         flex:1;
+            //         display: inline-block;
+            //         margin-right:1%;
+            //         dl{
+            //         margin-bottom: 8px;
+            //             dt{
+            //                 line-height: 28px;
+            //                 color: #999;
+            //                 background-color: #f0f0f0;
+            //                 padding: 0 8px;
+            //                 font-weight: 400;
+            //             }
+            //             dd{
+            //                 display: block;
+            //                 padding: 0 8px;
+            //                 line-height: 28px;
+            //                 height: 28px;
+            //                 background: #f5f5f6;
+            //                 color: #373d41;
+            //                 overflow: hidden;
+            //                 white-space: nowrap;
+            //                 text-overflow: ellipsis;
+            //                 letter-spacing: .02em;
+            //                 font-size: 12px;
+            //             }
+            //         }
+            //     }
+            //     .content>div:last-child{
+            //         margin-right: 0
+            //     }
+            //     .ivu-select-dropdown{
+            //         top:56px!important;
+            //         min-height: 240px;
+            //         background: #fff;
+            //         -webkit-transition: all .15s,.15s;
+            //         transition: all .15s,.15s;
+            //         // -webkit-box-shadow: 0 0 10px rgba(0,0,0,.1);
+            //         // box-shadow: 0 0 10px rgba(0,0,0,.1);
+            //         min-width: 600px;
+
+            //     }
+            //     .seach{
+            //         width: 600px;
+            //         margin: 20px auto ;
+            //         position: relative;
+            //     }
+            //     .inp{
+            //         width: 90%;
+            //         padding-left: 10px;
+            //         padding-right: 28px;
+            //         padding-bottom: 7px;
+            //         border: none;
+            //         font-size: 18px;
+            //         opacity: .3;
+            //         color: #666;
+            //         border-bottom: 2px solid #e3e6e9;
+            //         background-color: transparent;
+            //     }
+            //     .sea_icon{
+            //         position: absolute;
+            //         right:56px;
+            //         top: 3px;
+            //     }
+                
+            // }
             
             .main-breadcrumb{
                 display: inline-block
@@ -282,6 +356,7 @@
 
 // 部门管理 start
 .depart{
+   
     .ivu-tree{
         overflow-y: scroll;
         padding-bottom:110px;
@@ -296,14 +371,12 @@
     .col1{
         background-color: #EAEDF1;
         overflow: hidden;
-    }
-    .col2{
-        position: relative
+        position: relative;
     }
     .navicon{
         position: absolute;
         top: 38%;
-        left: -27px;
+        left: -25px;
         text-align: center;
         cursor: pointer;
         z-index: 99;
@@ -327,7 +400,7 @@
     .navicon1{
         position: absolute;
         top: 38%;
-        left: -10px;
+        left: 0px;
         z-index: 99;
         text-align: center;
         cursor: pointer;
@@ -346,6 +419,22 @@
     }
 }
 //部门管理end
+// 侧边栏间距start
+.ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title {
+    padding: 10px 24px;
+}
+.ivu-menu {
+    .ivu-menu-item>i{
+        margin-right: 10px
+    }
+    // .ivu-menu-item{
+    //     padding-left: 40px;
+    //     font-size: 13px;
+    // }
+}
+//侧边栏间距 end
+
+
 // 公共css start
 .background{
     background-color: #EAEDF1
